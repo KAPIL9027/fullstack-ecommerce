@@ -1,0 +1,36 @@
+{
+  "name": "fullstack-ecommerce-application",
+  "version": "1.0.0",
+  "description": "This is a full stack application created using the mern stack",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "server": "node backend/index.js",
+    "client": "npm run start --prefix frontend",
+    "dev": "concurrently \"npm run server\" \" npm run client\" "
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KAPIL9027/fullstack-ecommerce.git"
+  },
+  "keywords": [
+    "ecommerce",
+    "mern",
+    "node",
+    "react.js"
+  ],
+  "author": "KAPIL9027",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/KAPIL9027/fullstack-ecommerce/issues"
+  },
+  "homepage": "https://github.com/KAPIL9027/fullstack-ecommerce#readme",
+  "dependencies": {
+    "dotenv": "^16.1.3",
+    "express": "^4.18.2"
+  },
+  "devDependencies": {
+    "concurrently": "^8.0.1",
+    "nodemon": "^2.0.22"
+  }
+}
