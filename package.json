@@ -5,9 +5,11 @@
   "type": "module",
   "main": "index.js",
   "scripts": {
-    "server": "node backend/index.js",
+    "server": "nodemon backend/index.js",
     "client": "npm run start --prefix frontend",
-    "dev": "concurrently \"npm run server\" \" npm run client\" "
+    "dev": "concurrently \"npm run server\" \" npm run client\" ",
+    "data:import": "node backend/seeder.js",
+    "data:destroy": "node backend/seeder.js -d"
   },
   "repository": {
     "type": "git",
@@ -26,6 +28,10 @@
   },
   "homepage": "https://github.com/KAPIL9027/fullstack-ecommerce#readme",
   "dependencies": {
+    "bcrypt": "^5.1.0",
+    "bcryptjs": "^2.4.3",
+    "colors": "^1.4.0",
+    "cors": "^2.8.5",
     "dotenv": "^16.1.3",
     "express": "^4.18.2"
   },
