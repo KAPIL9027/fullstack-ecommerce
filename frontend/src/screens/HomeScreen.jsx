@@ -1,20 +1,17 @@
 import {useState,useEffect} from 'react'
 import Product from '../components/Product'
 import { Col, Row } from 'react-bootstrap'
+import {useGetProductsQuery} from '../slices/productsApiSlice.js'
 
 const HomeScreen = () => {
-  const [products, setProducts] = useState([])
-  useEffect(()=>{
-    const fetchProducts = async ()=>{
-      const res = await fetch('/api/products');
-      const data = await res.json();
-      setProducts(data);
-    }
-    fetchProducts()
-  },[])
+  const {data: products, isLoading, error} = useGetProductsQuery();
   return (
     <>
-      <h1>Latest Products</h1>
+      {
+        isLoading ? (<h2>Loading...</h2>): error ? ( <div> {error?.data?.message || error?.error}</div>):
+        (
+          <>
+          <h1>Latest Products</h1>
       <Row>
         {
             products.map(product => (
@@ -24,6 +21,10 @@ const HomeScreen = () => {
             ))
         }
       </Row>
+          </>
+          
+        )
+      }
     </>
   )
 }
