@@ -1,7 +1,10 @@
 import React from 'react'
-import { Container, Nav, Navbar } from 'react-bootstrap'
+import { Badge, Container, Nav, Navbar } from 'react-bootstrap'
+import { useSelector } from 'react-redux'
 import {LinkContainer} from 'react-router-bootstrap'
 const Header = () => {
+  const  {cartItems} = useSelector((state)=> state.cart)
+  console.log(cartItems);
   return (
     <header>
         <Navbar bg="dark" variant="dark" expand="md"
@@ -18,7 +21,11 @@ const Header = () => {
           <Nav className="ml-auto">
             <LinkContainer to="/cart">
             <Nav.Link>
-              <i className="fas fa-shopping-cart"></i>{" "}Cart</Nav.Link>
+              <i className="fas fa-shopping-cart"></i>{" "}Cart
+              <Badge pill bg='success' style={{marginLeft: '5px'}}>
+                {cartItems.reduce((a,c)=> a + c.qty, 0)}
+              </Badge>
+              </Nav.Link>
             </LinkContainer>
             <LinkContainer to="/signin">
             <Nav.Link href="/login">
