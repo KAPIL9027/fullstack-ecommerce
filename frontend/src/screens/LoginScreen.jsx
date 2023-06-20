@@ -26,7 +26,7 @@ const LoginScreen = () => {
         e.preventDefault()
         try {
             const res = await login({email, password}).unwrap();
-            dispatch(setCredentials({...res,}));
+            dispatch(setCredentials({...res, }));
             navigate(redirect);
         }
         catch(e){
@@ -62,10 +62,17 @@ return (
             </Form.Control>
         </Form.Group>
 
-        <Button type='submit' variant="primary" className='mt-2'>
+        <Button type='submit' variant="primary" className='mt-2' disabled={isLoading}>
             Sign in
         </Button>
-        </Form>  
+        {isLoading && <Loader/>}
+        </Form>
+
+        <Row className='py-3'>
+            <Col>
+            New Customer? <Link to={redirect ? `/register?redirect=${redirect}` : '/'}>Register</Link>
+            </Col>
+        </Row>  
     </FormContainer>
 )
 }
